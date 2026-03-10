@@ -16,6 +16,10 @@
       {
         "command": "makeraddon.helloWorld",
         "title": "Hello World"
+      }, 
+      {
+        "command": "makeraddon.createProject",
+        "title": "Criar Projeto Padrão"
       }
     ]
   },
