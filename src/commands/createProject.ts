@@ -1,40 +1,33 @@
 import * as vscode from 'vscode';
-import * as fs from 'fs/promises';
-import * as path from 'path';
+import { getWorkspaceFolder } from '../utils/workspace';
+import { generateAddon } from '../services/addonGenerator';
 
+export default function registerCreateProjectCommand(context: vscode.ExtensionContext) {
 
-export default  function RegisterCommandCreateProject(contex:vscode.ExtensionContext) {
-    const openFolders = vscode.workspace.workspaceFolders;
+    const command = vscode.commands.registerCommand(
+        'addon.createProject',
+        async () => {
 
-    const command = vscode.commands.registerCommand('makeraddon.createProject', async () => {
+            const folder = getWorkspaceFolder();
 
-        if (!openFolders) {
-        vscode.window.showErrorMessage('Por favor, abra uma pasta no VS Code primeiro');
-        return;
-    }
+            if (!folder) {
+                return;
+            }
 
-    try {
-        const folderPath = openFolders[0].uri.fsPath;
+            try {
 
-        const BPPath = path.join(folderPath, 'test','test_BP');
-        const RPPath = path.join(folderPath, 'test','test_RP');
-        
-        // Criar pastas
-        await fs.mkdir(BPPath, {recursive: true});
-        await fs.mkdir(RPPath, {recursive: true});
-        
+                await generateAddon(folder);
 
-      
+                vscode.window.showInformationMessage("Addon gerado com sucesso");
 
-        
-    } catch (error) {
-        vscode.window.showErrorMessage("Erro ao criar o test_BP e/ou test_RP");
-    }
+            } catch (error) {
 
-    vscode.window.showInformationMessage("Addon Gerado com sucesso");
-    });
+                vscode.window.showErrorMessage("Erro ao gerar addon");
 
-    contex.subscriptions.push(command);
+            }
+
+        }
+    );
+
+    context.subscriptions.push(command);
 }
-
-
