@@ -1,4 +1,6 @@
-export function manifestTemplate(data) {
+import { ManifestTemplateData } from "../../types/manifest";
+
+export function manifestTemplate(data: ManifestTemplateData) {
   return {
     format_version: 3,
     header: {
