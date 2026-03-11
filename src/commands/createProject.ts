@@ -5,7 +5,7 @@ import { generateAddon } from '../services/addonGenerator';
 export default function registerCreateProjectCommand(context: vscode.ExtensionContext) {
 
     const command = vscode.commands.registerCommand(
-        'addon.createProject',
+        'makeraddon.createProject',
         async () => {
 
             const folder = getWorkspaceFolder();
