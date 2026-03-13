@@ -1,9 +1,10 @@
 import * as vscode from 'vscode';
-import RegisterCommandCreateProject from './commands/createProject';
+import { registerCreateAddon } from './commands/createAddon';
+
 
 export function activate(context: vscode.ExtensionContext) {
 
-	RegisterCommandCreateProject(context);
+	registerCreateAddon(context);
 }
 
 export function deactivate() {}

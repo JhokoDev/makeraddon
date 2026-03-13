@@ -18,8 +18,8 @@
         "title": "Hello World"
       },
       {
-        "command": "makeraddon.createProject",
-        "title": "Criar Projeto Padrão"
+        "command": "makeraddon.createAddon",
+        "title": "Criar Addon Padrão"
       }
     ]
   },
