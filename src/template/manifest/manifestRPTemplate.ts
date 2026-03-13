@@ -6,15 +6,15 @@ export function manifestRPTemplate(data: any) {
       name: data.name,
       description: data.description,
       uuid: data.headerUuid,
-      version: [1, 0, 0],
-      min_engine_version: [1, 20, 0]
+      version: "1.0.0",
+      min_engine_version: "1.26.0"
     },
 
     modules: [
       {
         type: "resources",
         uuid: data.moduleUuid,
-        version: [1, 0, 0]
+        version: "1.0.0"
       }
     ],
 
