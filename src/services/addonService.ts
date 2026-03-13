@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { getWorkspaceFolder } from "../utils/workspace";
 import { generateAddon } from "../generators/addon/generateAddon";
 
-export async function createAddon(name: string) {
+export async function createAddon(name: string, extensionPath: string) {
 
   const folder = getWorkspaceFolder();
 
@@ -17,7 +17,8 @@ export async function createAddon(name: string) {
     name,
     description: "Generated addon",
     author: "MakerAddon"
-  });
+  },
+  extensionPath);
 
   // Opcional: Avisar que deu tudo certo no final
   vscode.window.showInformationMessage(`Addon "${name}" criado com sucesso!`);

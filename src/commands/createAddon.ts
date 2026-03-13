@@ -16,7 +16,7 @@ export function registerCreateAddon(context: vscode.ExtensionContext) {
         return
       };
 
-      await createAddon(name);
+      await createAddon(name, context.extensionPath);
 
     }
   );

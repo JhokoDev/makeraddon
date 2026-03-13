@@ -4,8 +4,9 @@ import * as vscode from "vscode"; // Adicione isso para mostrar a mensagem de er
 
 import { generateBPManifest } from "../manifest/generateBPManifest";
 import { generateRPManifest } from "../manifest/generateRPManifest";
+import { copyFile } from "../../writers/writeJson";
 
-export async function generateAddon(root: string, config: any) {
+export async function generateAddon(root: string, config: any, extensionPath: string) {
   const addonPath = path.join(root, config.name);
   const BP = path.join(addonPath, "BP");
   const RP = path.join(addonPath, "RP");
@@ -27,4 +28,11 @@ export async function generateAddon(root: string, config: any) {
     vscode.window.showErrorMessage(`Erro ao gerar RP Manifest: ${error.message}`);
     console.error(error);
   }
+
+  const iconSource = path.join(extensionPath, "assets", "default_icon.png");
+  const bpIconDest =  path.join(BP, "pack_icon.png");
+  const rpIconDest =  path.join(RP, "pack_icon.png");
+
+  await copyFile(iconSource, bpIconDest);
+  await copyFile(iconSource, rpIconDest);
 }
