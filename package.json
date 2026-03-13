@@ -19,7 +19,7 @@
       },
       {
         "command": "makeraddon.createAddon",
-        "title": "Criar Addon Padrão"
+        "title": "MakerAddon: Create Addon"
       }
     ]
   },
